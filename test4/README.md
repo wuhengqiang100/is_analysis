@@ -1,4 +1,4 @@
-# 实验二：图书管理系统用例建模
+# 图书管理系统顺序图绘制
 学号|班级|姓名|
 |:-------:|:-------------: | :----------:|
 |201510414220|软件(本)15-2|巫恒强|
@@ -6,147 +6,156 @@
 ***
 ### ====== 以下为本次作业 ======
 - - -
-# 实验三：图书管理系统领域对象建模
-## 1.图书管理系统的类图
-### 1.1 图书管理系统的类图PlantUML源码如下：
-    @startuml
-    class 借阅记录{
-        借阅日期
-        借阅人ID
-        图书编号
-        数量
-        归还情况
-    }
-    class 学生{
-        学号
-        所属院系
-    }
-    
-    class 老师{
-        工号
-    }
-    
-    class 读者{
-        读者ID
-        读者类型
-    }
-    class 馆员
-    class 罚款{
-        金额
-        罚款人ID
-        校园卡卡号
-    }
-    class 图书管理系统
-    class 维护人员
-    class 预订记录{
-        预约人ID
-        预约日期
-        预约书号
-    }
-    class 书目{
-        书号
-        书名
-        作者
-        出版社
-        出版日期
-        版本号
-        ISBN
-        总书本数
-        借书数量
-        预订数量
-    }
-    class 图书{
-        图书编号
-        图书状态
-    }
-    读者 <|-down-老师
-    读者 <|-right- 学生
-    借阅记录 "0..5" -down-"1" 读者:借阅
-    
-    图书管理系统 "1"-right-"0..*"读者
-    读者 "0..1" -left- "0..3" 预订记录:预订
-    借阅记录 "0..n" -left- "1" 馆员:管理;
-    馆员 "1..*" -left-  "0..*"图书:管理
-    罚款 "1"-- "0..*"读者:+缴费
-    图书管理系统 -down- 罚款:查询
-    图书管理系统 "1"-left-"1" 书目:拥有
-    维护人员 "1..*" -down- "1" 图书管理系统:维护
-    预订记录 "0..n" -left-  "0..1"书目:预订
-    图书 "n" -up-  "1" 书目
-    @enduml
-### 1.2 图书管理系统的类图如下：
-![](images/3.1.png)
+# 实验四： 图书管理系统顺序图绘制
+## 1.借阅者查找图书时序图
+### 1.1 借阅者查找图书时序图PlantUML源码如下：
+        @startuml
+            skinparam sequenceArrowThickness 2
+            skinparam roundcorner 20
+            skinparam maxmessagesize 60
+            skinparam sequenceParticipant underline
+            
+            actor ":Borrower" as User
+            note left of User #aqua
+                借阅者查找
+                图书时序图
+            end note
+            participant "SearchBookWindow" as A
+            participant ":Book" as B
+            User -> A: 1.查找图书信息
+            activate User
+            activate A
+            activate B
+            A -> B: 1.1 根据图书编号查找图书
+            B --> A: 1.1.1 返回图书信息
+            deactivate User
+            deactivate B
+            A -->User:1.2 显示图书信息
+            activate User
+            deactivate User
+            deactivate A
+        @enduml
+### 1.2 借阅者查找图书时序图如下：
+![](images/借阅者查找图书序列图.png)
 
 
-## 2.图书管理系统对象图
-### 2.1 图书,书目 对象图如下：
+## 2.借阅者查询个人信息时序图
+### 2.1 借阅者查询个人信息时序图PlantUML源码如下：
 
-    @startuml
-    
-    class 图书{
-        图书编号:201103001
-        图书状态:可借
-    }
-    class 书目{
-        书号:9787040126614
-        书名:信息系统分析与设计
-        作者:赵卫东
-        出版社:清华大学出版社
-        出版日期:20151001
-        版本号:第四版
-        ISBN:978-302-32982-4
-        总书本数:20
-        借书数量:5
-        预订数量:2
-    }
-    @enduml
-![](images/图书,书目对象图.png)
-### 2.2 借阅记录 对象图如下：
-    @startuml
-       class 借阅记录{
-            借阅日期:20180410
-            借阅人ID:201510414220
-            图书编号:201103001
-            数量:1
-            归还情况:未还
-        }
-    @enduml
-![](images/借阅记录对象图.png)
+       @startuml
+           skinparam sequenceArrowThickness 2
+           skinparam roundcorner 20
+           skinparam maxmessagesize 60
+           skinparam sequenceParticipant underline
+           
+           actor ":Borrower" as User
+           note left of User #aqua
+            借阅者查询个人
+            信息时序图
+           end note
+           participant "LoginWindow" as A
+           participant "PersonInfoWindow" as B
+           actor ":Borrower" as C
+             activate A
+             activate B
+             activate User
+           User -> A: 登录系统
+           activate C
+           A -> C: 1.2 实例化借阅者对象
+           C --> B: 1.2.1 返回借阅者信息
+           deactivate User
+           deactivate C
+           B --> User: 1.2.1.1 显示借阅者信息
+           activate User
+           deactivate User
+           deactivate B
+           A --> User: 1.1 登录信息
+           activate User
+           deactivate User
+           destroy A
+       @enduml
+### 2.2 借阅者查找图书时序图如下：
+![](images/借阅者查询个人信息时序图.png)
 
-### 2.3 学生,老师,读者 对象图如下：
-    @startuml
-    class 学生{
-            学号:201510414220
-            所属院系:信息科学与工程学院
-        }
-    
-        class 老师{
-            工号:031520
-        }
-    
-        class 读者{
-            读者ID:201510414220
-            读者类型:学生
-        }
-    @enduml
-![](images/学生,老师,读者对象图.png)
-### 2.4 罚款 对象图如下：
-    @startuml
-         class 罚款{
-              金额:5.00
-              罚款人ID:201510414220
-              校园卡卡号:201510414220
-         }
-    @enduml
-                  
-  ![](images/罚款对象图.png)
-### 2.4 预订记录 对象图如下：
-    @startuml
-       class 预订记录{
-           预约人ID:201510414220
-           预约日期:20180417
-           预约书号:9787040126614
-       }
-    @enduml                
-                    
-  ![](images/预订记录对象图.png)
+## 3.图书管理员处理借阅时序图
+### 3.1 图书管理员处理借阅时序图PlantUML源码如下：
+        @startuml
+            skinparam sequenceArrowThickness 2
+            skinparam roundcorner 20
+            skinparam maxmessagesize 60
+            skinparam sequenceParticipant underline
+            
+            actor ":Borrower" as User
+            note left of User #aqua
+                图书管理员处理
+                还书时序图
+            end note
+            actor ":Libranian" as Lib
+            participant "LendBookWindow" as A
+            participant ":Book" as B
+            participant ":Loan" as C
+            activate A
+            activate B
+            activate C
+            User -> Lib: 1.提交图书证和书籍
+            deactivate C
+            activate User
+            activate Lib
+            Lib -> A: 1.1 借出图书
+            A -> B: 1.1.1 选择图书
+            B --> A: 1.1.1.1  书本信息
+            A -> C: 1.1.2  添加借阅图书信息
+            deactivate B
+            activate C
+            C -> C:1.1.2.1 检查借阅书籍信息
+            C --> A: 1.1.2.2  添加借阅信息消息
+            deactivate C
+            A -->Lib:1.1.3 显示借阅信息消息
+            Lib -->User:1.2 归还书籍和图书证
+            deactivate Lib
+            deactivate User
+        @enduml
+### 3.2 图书管理员处理借阅时序图如下：
+![](images/图书管理员处理借阅时序图.png)
+
+## 4.图书管理员处理还书时序图
+### 4.1 图书管理员处理还书时序图PlantUML源码如下：
+          @startuml
+              skinparam sequenceArrowThickness 2
+              skinparam roundcorner 20
+              skinparam maxmessagesize 60
+              skinparam sequenceParticipant underline
+              
+              actor ":Borrower" as User
+              note left of User #aqua
+                图书管理员处理
+                还书时序图
+              end note
+              actor ":Libranian" as Lib
+              participant "ReturnBookWindow" as A
+              participant ":Book" as B
+              participant ":Loan" as C
+              activate A
+              activate B
+              activate C
+              User -> Lib: 1.提交借阅书籍
+              activate User
+              activate Lib
+              Lib -> A: 1.1 处理借阅书籍
+              A -> B: 1.1.1 获取图书信息
+              B --> A: 1.1.1.1  图书信息
+              A -> C: 1.1.2  删除借阅记录
+              deactivate B
+              C -> C:1.1.2.1 检查是否超时
+              deactivate User
+              C -> C:1.1.2.1 删除借阅记
+              deactivate A
+              deactivate B
+              C --> A: 1.1.2.3  删除信息
+              deactivate C
+              activate A
+              A -->Lib:1.1.3 显示归还信息
+              deactivate A
+          @enduml
+### 4.2 图书管理员处理还书时序图如下：
+![](images/图书管理员处理还书时序图.png)
