@@ -89,13 +89,13 @@
   
 ![](images/5.1.png)
 - 用例图参见：借书用例
-- 类图参见：借书类，读者类
+- 类图参见：书目类,借书类
 - 顺序图参见：借书顺序图
 - API接口如下：  
 
 1.查询图书API
 - 功能：用于获取图书所有信息
-- 请求地址： http://localhost:8080/library/api/select
+- 请求地址： http://localhost:8080/library/api/selectBook
 - 请求方法：POST
 - 请求参数：
 
@@ -109,15 +109,17 @@
 {
     "info": "查询成功,返回信息",
     "data": {
-        "nickname": "O记_Mega可达鸭",
-        "uid": "14361",
-        "signature": "呀  一不小心就进化了",
-        "score1": "322",
-        "real_nickname": "O记_Mega可达鸭",
-        "title": "Lv3 转正",
-        "avatar128": "http://upload.opensns.cn/Uploads_Avatar_14361_58e4b58fccf81.jpg?imageMogr2/crop/!260x260a6a22/thumbnail/128x128!",
-        "avatar512": "http://upload.opensns.cn/Uploads_Avatar_14361_58e4b58fccf81.jpg?imageMogr2/crop/!260x260a6a22/thumbnail/512x512!"
-    },
+        "bookNumber": "00001",
+        "bookName": "SpringBoot",
+        "author": "**小强",
+        "press": "工业出版社",
+        "publishDate": "2017-02-15",
+        "version": "第五版",
+        "ISBN": "978-7-308-17148-9",
+        "allNumber": "100",
+        "lendNumber": "20",
+        "reserveNumber": "20",
+        },
     "code": 200
 }
 ```
@@ -126,5 +128,34 @@
 |参数名称|说明|
 |:-------:|:-------------: |
 |Info|返回信息|
-|data返回的图书信息|
+|data|返回的图书信息|
+|dodo|返回码|
+
+2.借阅图书API
+- 功能：用于获取图书所有信息
+- 请求地址： http://localhost:8080/library/api/lendBook
+- 请求方法：POST
+- 请求参数：
+
+|参数名称|必填|说明|
+|:-------:|:-------------: | :----------:|
+|读者ID|是|读者信息表主键 |
+|method|是|固定为 “post”。|
+
+- 返回实例：
+```
+{
+    "info": "借阅成功",
+    "data": {
+        "result": "借阅成功",
+        },
+    "code": 200
+}
+```
+- 返回参数说明：
+    
+|参数名称|说明|
+|:-------:|:-------------: |
+|Info|返回信息|
+|data|返回的结果信息|
 |dodo|返回码|
