@@ -1,7 +1,4 @@
-﻿<!-- markdownlint-disable MD033-->
-<!-- 禁止MD033类型的警告 https://www.npmjs.com/package/markdownlint -->
-
-# 接口：setOneStudentResults  [返回](../README.md)
+﻿# 接口：setOneStudentResults  [返回](../README.md)
 用例： [评定成绩](../用例/评定成绩.md)
 
 - 功能：
@@ -22,13 +19,13 @@
  
 - 请求实例：  
         { 
-            "student_id": "201510315203", 
-            "total": 6,
-            "data": [
+            "s
+            "data": [tudent_id": "201510414220", 
+                                 "total": 6,
                 {
                 "test_id":1,
-                "result": 91, 
-                "memo":"本实验做得好",
+                "result": 92, 
+                "memo":"按要求完成,有扩展,很好",
                 }, 
                 {
                 ...其他实验

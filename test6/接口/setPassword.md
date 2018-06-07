@@ -19,7 +19,7 @@
 - 请求实例：
 
         {
-            "user_id":1234,
+            "user_id":201510414220,
             "password":AF#W@#AAAASDF
         }
         

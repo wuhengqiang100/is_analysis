@@ -27,10 +27,10 @@
         {         
             "status": true,
             "info": null,
-            "ID":"2101201281",    
-            "name":"张三",
-            "class_dept":"软件工程1班"
-            "github_username":"ABCD",
+            "ID":"201510414220",    
+            "name":"巫恒强",
+            "class_dept":"软件工程2班"
+            "github_username":"wuhengqiang100",
             "type":"学生"            
         }
  

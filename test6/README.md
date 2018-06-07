@@ -23,7 +23,7 @@
 ## 2. 系统总体结构
 ![](images/系统总体结构.png)
 
-界面设计参见：https://wuhengqiang100.github.io/is_analysis/test6/ui界面设计/index.html
+界面设计参见：https://wuhengqiang100.github.io/is_analysis/test6/ui/index.html
     
 ## 3. 用例图设计 [源码](src/用例图.puml)
 ![](images/用例图.png)

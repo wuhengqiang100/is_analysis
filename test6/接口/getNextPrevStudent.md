@@ -1,6 +1,4 @@
-﻿<!-- markdownlint-disable MD033-->
-<!-- 禁止MD033类型的警告 https://www.npmjs.com/package/markdownlint -->
-
+﻿
 # 接口：getNextPrevStudent  [返回](../README.md)
 用例： [评定成绩](../用例/评定成绩.md)
 
@@ -8,7 +6,7 @@
     返回一个学生的上一个或者下一个学生的学号。
     
 - 权限：    
-    老师：只有老师可以调用该API。
+    老师：只有老师可以调用该API,在评定成绩的时候调用。
     
 - API请求地址： 
     接口基本地址/v1/api/getNextPrevStudent/<is_next>/<student_id>
@@ -28,7 +26,7 @@
         {         
             "status": true,
             "info": null,    
-            "student_id": "201510315203"
+            "student_id": "201510414220"
         }
  
 - 返回参数说明：    

@@ -1,7 +1,4 @@
-﻿<!-- markdownlint-disable MD033-->
-<!-- 禁止MD033类型的警告 https://www.npmjs.com/package/markdownlint -->
-
-# 接口：getOneStudentResults  [返回](../README.md)
+﻿# 接口：getOneStudentResults  [返回](../README.md)
 用例： [查看成绩](../用例/查看成绩.md)，[评定成绩](../用例/评定成绩.md)
 
 - 功能：
@@ -28,17 +25,18 @@
         {         
             "status": true,
             "info": null,    
-            "student_id": "201510315203", 
-            "github_username": "chinajuedui", 
-            "class": "软件(本)15-1", 
-            "name": "陈松华", 
-            "total": 6,
-            "avgresult":90.5,       
+            "student_id": "201510414220", 
+            "course_id":"1",
+            "github_username": "wuhengqiang100", 
+            "class": "软件(本)15-2", 
+            "name": "巫恒强", 
+            "total": "6",
+            "avgresult":"85.0",       
             "data": [
                 {
                 "test_id":1,
                 "web_exists": true, 
-                "result": 91, 
+                "result": "85.0", 
                 "memo":"本实验做得好",
                 "update_date": "2018-04-02 13:48:01"
                 }, 
@@ -55,6 +53,7 @@
   |status|bool类型，true表示正确的返回，false表示有错误|
   |info|返回结果说明信息|
   |student_id|学号|
+  |course_id|课程编号,1为信息系统分析与设计|
   |github_username|学生的gitHub用户名|
   |class|班级|
   |name|真实姓名|   
