@@ -21,15 +21,15 @@
 - 考虑到有多个学期，每个学期都有不同的实验。
 - 系统设计在界面上和操作上应该方便老师查询和评阅学生的实验成绩，应该方便学生查询实验成绩。
 ## 2. 系统总体结构
-![](images/系统总体结构.png)
+![](images_s/系统总体结构.png)
 
 界面设计参见：https://wuhengqiang100.github.io/is_analysis/test6/ui/index.html
     
 ## 3. 用例图设计 [源码](src/用例图.puml)
-![](images/用例图.png)
+![](images_s/用例图.png)
 
 ## 4. 类图设计 [源码](src/类图.puml)
-![](images/类图.png)
+![](images_s/类图.png)
 
 ## 5. 数据库设计
 - ### [参见数据库设计](数据库设计/数据库设计.md)
